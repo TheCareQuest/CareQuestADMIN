@@ -1,0 +1,43 @@
+.add-endorser-container {
+    max-width: 800px;
+    margin: 50px auto; /* Center the container and add top margin */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: flex;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .success-message {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #7fcef3;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+  }
