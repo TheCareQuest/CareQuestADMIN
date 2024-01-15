@@ -1,59 +1,86 @@
+/* ReportPage.css */
 
 .report-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-container {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-label {
+  margin-right: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.filter-select {
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #3498db;
+  border-radius: 6px;
+  background-color: #ecf0f1;
+  color: #333;
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.filter-select:hover,
+.filter-select:focus {
+  border-color: #2980b9;
+  background-color: #dfe6e9;
+}
+
+.filter-select option {
+  font-size: 14px;
   
-  .filter-container {
-    margin-bottom: 20px;
-  }
-  
+}
+
+.reports-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 20px;
+}
+
+.report-item {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.report-details {
+  flex: 1; /* Take remaining space */
+}
+
+.report-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+button {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.blocked-users-message {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #e74c3c;
+  color: #fff;
+  border-radius: 8px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 576px) {
   .reports-list {
-    display: grid;
-    grid-gap: 20px;
+    grid-template-columns: 1fr; /* Change to a single column on smaller screens */
   }
-  
-  .report-item {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
-  
-  .report-details {
-    flex: 1; /* Take remaining space */
-  }
-  
-  .report-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  
-  button {
-    padding: 8px;
-    cursor: pointer;
-  }
-  .blocked-users-message {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #e74c3c;
-    color: #fff;
-    border-radius: 8px;
-  }
-  /* Responsive styles (optional) */
-  @media screen and (max-width: 576px) {
-    .report-item {
-      flex-direction: column; /* Stack items vertically on small screens */
-    }
-  
-    .report-buttons {
-      flex-direction: column;
-      align-items: center;
-      margin-top: 10px;
-    }
-  }
+}

@@ -32,12 +32,12 @@ function Header({ OpenSidebar, isLoggedIn, handleLogout }) {
       <div className='menu-icon'>
         <BsJustify className='icon' onClick={OpenSidebar} />
       </div>
-      <div className='header-left'>
+      {/* <div className='header-left'>
         <BsSearch className='icon' />
-      </div>
+      </div> */}
       <div className='header-right'>
-        <BsFillBellFill className='icon' />
-        <BsFillEnvelopeFill className='icon' />
+        {/* <BsFillBellFill className='icon' />
+        <BsFillEnvelopeFill className='icon' /> */}
         {isLoggedIn && (
           <>
             <button className='logout-button' onClick={handleLogoutButtonClick}>

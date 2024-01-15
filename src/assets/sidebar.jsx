@@ -1,6 +1,6 @@
 import React from 'react';
-import { BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
-  BsMenuButtonWideFill, BsFillGearFill }
+import { BsGrid1X2Fill, BsPersonPlusFill, BsPeople, BsPeopleFill, 
+    BsFileTextFill,  BsShieldLockFill}
  from 'react-icons/bs';
 
 function Sidebar({ openSidebarToggle, OpenSidebar }) {
@@ -15,39 +15,39 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
         <span className='icon close_icon' onClick={OpenSidebar}>X</span>
       </div>
 
-        <ul className='sidebar-list'>
-            <li className='sidebar-list-item'>
-                <a href="/home">
-                    <BsGrid1X2Fill className='icon'/> Dashboard
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="/add-endorsers">
-                    <BsFillArchiveFill className='icon'/> Add Endorsers
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsFillGrid3X3GapFill className='icon'/> Care Providers
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsPeopleFill className='icon'/> Hope Seekers
-                </a>
-            </li>
-           
-            <li className='sidebar-list-item'>
-                <a href="/report">
-                    <BsMenuButtonWideFill className='icon'/> Reports
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="">
-                    <BsFillGearFill className='icon'/> Setting
-                </a>
-            </li>
-        </ul>
+      <ul className='sidebar-list'>
+        <li className='sidebar-list-item'>
+          <a href="/home">
+            <BsGrid1X2Fill className='icon' /> Dashboard
+          </a>
+        </li>
+        <li className='sidebar-list-item'>
+          <a href="/add-endorsers">
+            <BsPersonPlusFill className='icon' /> Add Endorsers
+          </a>
+        </li>
+        <li className='sidebar-list-item'>
+          <a href="">
+            <BsPeople className='icon' /> Care Providers
+          </a>
+        </li>
+        <li className='sidebar-list-item'>
+          <a href="/hopeseekers">
+            <BsPeopleFill className='icon' /> Hope Seekers
+          </a>
+        </li>
+
+        <li className='sidebar-list-item'>
+          <a href="/report">
+            <BsFileTextFill className='icon' /> Reports
+          </a>
+        </li>
+        <li className='sidebar-list-item'>
+          <a href="/daccounts">
+            <BsShieldLockFill className='icon' /> Deactivated Accounts
+          </a>
+        </li>
+      </ul>
     </aside>
   )
 }

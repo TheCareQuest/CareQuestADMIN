@@ -1,0 +1,68 @@
+/* HopeSeekerList.css */
+
+.hope-seekers-container {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .filter-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .filter-label {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .filter-select {
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #3498db;
+    border-radius: 6px;
+    background-color: #ecf0f1;
+    color: #333;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    flex-grow: 1; /* Take up remaining space */
+    margin-right: 10px; /* Add margin for better spacing */
+  }
+  
+  .filter-select:hover,
+  .filter-select:focus {
+    border-color: #2980b9;
+    background-color: #dfe6e9;
+  }
+  
+  .filter-select option {
+    font-size: 14px;
+  }
+  
+  .hope-seekers-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .hope-seeker-item {
+    flex: 0 1 calc(33.333% - 20px); /* Adjust the width based on your design */
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .activation-message {
+    margin-top: 20px;
+    padding: 15px;
+  }
+  

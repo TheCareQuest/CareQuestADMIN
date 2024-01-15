@@ -7,6 +7,8 @@ import LoginPage from './assets/loginPage';
 import AddEndorsers from './assets/addEndorser'; 
 import Report from './assets/Reports'; 
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import DeactivatedAccountsPage from './assets/DeactivatedAccountsPage';
+import HopeSeekerList from './assets/HopeSeekerList';
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -60,9 +62,17 @@ function App() {
             path='/add-endorsers'
             element={<AddEndorsers /> }
           />
+           <Route
+            path='/daccounts'
+            element={<DeactivatedAccountsPage /> }
+          />
             <Route
             path='/report'
             element={<Report/>}
+          />
+          <Route
+            path='/hopeseekers'
+            element={<HopeSeekerList/>}
           />
         </Routes>
       </div>

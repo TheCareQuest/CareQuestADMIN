@@ -1,0 +1,78 @@
+/* DeactivatedAccountsPage.css */
+
+.deactivated-accounts-container {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .filter-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .filter-label {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .filter-select {
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #3498db;
+    border-radius: 6px;
+    background-color: #ecf0f1;
+    color: #333;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    flex-grow: 1; /* Take up remaining space */
+    margin-right: 10px; /* Add margin for better spacing */
+  }
+  
+  .filter-select:hover,
+  .filter-select:focus {
+    border-color: #2980b9;
+    background-color: #dfe6e9;
+  }
+  
+  .filter-select option {
+    font-size: 14px;
+  }
+  
+  .deactivated-accounts-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .account-item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  button {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .activation-message {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #2ecc71;
+    color: #fff;
+    border-radius: 8px;
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 576px) {
+    .deactivated-accounts-list {
+      grid-template-columns: 1fr;
+    }
+  }
+  
