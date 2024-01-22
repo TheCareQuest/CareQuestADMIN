@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { BsFillBellFill, BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify } from 'react-icons/bs';
-import { Link, useNavigate } from 'react-router-dom';
+import { BsFillBellFill, BsFillEnvelopeFill, BsJustify } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 function Header({ OpenSidebar, isLoggedIn, handleLogout }) {
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
@@ -32,12 +32,7 @@ function Header({ OpenSidebar, isLoggedIn, handleLogout }) {
       <div className='menu-icon'>
         <BsJustify className='icon' onClick={OpenSidebar} />
       </div>
-      {/* <div className='header-left'>
-        <BsSearch className='icon' />
-      </div> */}
       <div className='header-right'>
-        {/* <BsFillBellFill className='icon' />
-        <BsFillEnvelopeFill className='icon' /> */}
         {isLoggedIn && (
           <>
             <button className='logout-button' onClick={handleLogoutButtonClick}>

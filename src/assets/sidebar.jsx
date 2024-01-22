@@ -1,7 +1,13 @@
 import React from 'react';
-import { BsGrid1X2Fill, BsPersonPlusFill, BsPeople, BsPeopleFill, 
-    BsFileTextFill,  BsShieldLockFill}
- from 'react-icons/bs';
+import {
+  BsGrid1X2Fill,
+  BsPersonPlusFill,
+  BsPeople,
+  BsPeopleFill,
+  BsFileTextFill,
+  BsShieldLockFill,
+  BsLink, // Placeholder for a generic link icon
+} from 'react-icons/bs';
 
 function Sidebar({ openSidebarToggle, OpenSidebar }) {
   return (
@@ -27,7 +33,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="">
+          <a href="/careproviders">
             <BsPeople className='icon' /> Care Providers
           </a>
         </li>
@@ -36,7 +42,6 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
             <BsPeopleFill className='icon' /> Hope Seekers
           </a>
         </li>
-
         <li className='sidebar-list-item'>
           <a href="/report">
             <BsFileTextFill className='icon' /> Reports
@@ -47,9 +52,16 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
             <BsShieldLockFill className='icon' /> Deactivated Accounts
           </a>
         </li>
+
+        {/* Social Buzz Section */}
+        <li className='sidebar-list-item'>
+          <a href="/socailbuzz">
+            <BsLink className='icon' /> Social Buzz
+          </a>
+        </li>
       </ul>
     </aside>
   )
 }
 
-export default Sidebar
+export default Sidebar;
