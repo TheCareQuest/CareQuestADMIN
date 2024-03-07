@@ -11,6 +11,7 @@ import DeactivatedAccountsPage from './assets/DeactivatedAccountsPage';
 import HopeSeekerList from './assets/HopeSeekerList';
 import SocialBuzz from './assets/SocailBuzz';
 import CareProviderList from './assets/CareProviderList';
+import EndorsersList from './assets/EndorserList';
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -37,7 +38,7 @@ function App() {
       setLoggedIn(true);
       // Store the login state in local storage
       localStorage.setItem('isLoggedIn', 'true');
-      navigate('/home'); // Redirect to the home page after successful login
+      navigate('/adminhome'); // Redirect to the home page after successful login
     } else {
       alert('Invalid username or password');
     }
@@ -54,10 +55,10 @@ function App() {
       <Routes>
         <Route
           path='/'
-          element={isLoggedIn ? <Navigate to='/home' /> : <Navigate to='/login' />}
+          element={isLoggedIn ? <Navigate to='/adminhome' /> : <Navigate to='/adminlogin' />}
         />
         <Route
-          path='/home'
+          path='/adminhome'
           element={
             isLoggedIn ? (
               <>
@@ -66,17 +67,18 @@ function App() {
                 <Home />
               </>
             ) : (
-              <Navigate to='/login' />
+              <Navigate to='/adminlogin' />
             )
           }
         />
-        <Route path='/login' element={<LoginPage onLogin={handleLogin} />} />
+        <Route path='/adminlogin' element={<LoginPage onLogin={handleLogin} />} />
         <Route path='/add-endorsers' element={<AddEndorsers />} />
         <Route path='/daccounts' element={<DeactivatedAccountsPage />} />
         <Route path='/report' element={<Report />} />
         <Route path='/hopeseekers' element={<HopeSeekerList />} />
         <Route path='/careproviders' element={<CareProviderList />} />
         <Route path='/socailbuzz' element={<SocialBuzz />} />
+        <Route path='/manageEndorser' element={<EndorsersList />} />
       </Routes>
     </div>
   );

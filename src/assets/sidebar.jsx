@@ -23,7 +23,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
 
       <ul className='sidebar-list'>
         <li className='sidebar-list-item'>
-          <a href="/home">
+          <a href="/adminhome">
             <BsGrid1X2Fill className='icon' /> Dashboard
           </a>
         </li>
@@ -52,7 +52,11 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
             <BsShieldLockFill className='icon' /> Deactivated Accounts
           </a>
         </li>
-
+        <li className='sidebar-list-item'>
+          <a href="/manageEndorser">
+            <BsShieldLockFill className='icon' /> Manage Endorsers
+          </a>
+        </li>
         {/* Social Buzz Section */}
         <li className='sidebar-list-item'>
           <a href="/socailbuzz">

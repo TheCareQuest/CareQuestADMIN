@@ -183,7 +183,19 @@ body {
 }
 
 /* End Main  */
-
+.button{
+  border-radius: 25px;
+  width: 80%;
+  height: 40px;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 700;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(90deg, #7ebfb3 50%, black 50%);
+  border: 0px;
+  cursor: pointer;
+  transition: opacity 0.25s ease-out;
+}
 
 /* Medium <= 992px */
   

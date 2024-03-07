@@ -19,7 +19,7 @@ function Header({ OpenSidebar, isLoggedIn, handleLogout }) {
     setShowLogoutConfirmation(false);
 
     // Redirect to the login page
-    navigate('/login');
+    navigate('/adminlogin');
   };
 
   const handleCancelLogout = () => {
