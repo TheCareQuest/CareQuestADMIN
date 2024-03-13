@@ -1,53 +1,58 @@
-// HopeSeekerList.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './header';
 import Sidebar from './sidebar';
 import './Styling/hopeseekerlist.css';
 
 const HopeSeekerList = () => {
-  const [hopeSeekers, setHopeSeekers] = useState([
-    {
-      id: 1,
-      name: 'Anus Tariq',
-      phone: '123-456-7890',
-      iban: 'PK611234567891234567',
-      location: 'Lahore, Pakistan',
-      monthlySalary: 'Rs. 25,000',
-      isVerified: false,
-    },
-    {
-      id: 2,
-      name: 'Sana Khan',
-      phone: '321-987-6543',
-      iban: 'PK611234567891234567',
-      location: 'Lahore, Pakistan',
-      monthlySalary: 'Rs. 25,000',
-      isVerified: false,
-    },
-    {
-      id: 3,
-      name: 'Ahmed Ali',
-      phone: '111-222-3333',
-      iban: 'PK223344556677889900',
-      location: 'Karachi, Pakistan',
-      monthlySalary: 'Rs. 40,000',
-      isVerified: false,
-    },
-    // Add more hope seekers as needed
-  ]);
+  const [hopeSeekers, setHopeSeekers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  const handleVerifyAccount = (id) => {
-    setHopeSeekers((prevHopeSeekers) =>
-      prevHopeSeekers.map((seeker) =>
-        seeker.id === id ? { ...seeker, isVerified: true } : seeker
-      )
-    );
+  const fetchHopeSeekers = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/hopeSeekers');
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Fetched hope seekers:', data.hopeSeekers); // Log the fetched data
+        if (data && data.hopeSeekers) {
+          setHopeSeekers(data.hopeSeekers);
+          setLoading(false);
+        } else {
+          setError('No hope seekers found');
+        }
+      } else {
+        setError('Failed to fetch hope seekers');
+      }
+    } catch (error) {
+      console.error('Error fetching hope seekers:', error); // Log any error that occurs
+      setError('Error fetching hope seekers');
+    }
   };
+
+  const handleVerifyAccount = async (username) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/hopeSeekers/${username}/verify`, {
+        method: 'PUT'
+      });
+      if (response.ok) {
+        // Hope seeker verified successfully
+        fetchHopeSeekers(); // Refresh hope seekers list
+      } else {
+        setError('Failed to verify account');
+      }
+    } catch (error) {
+      setError('Error verifying account');
+    }
+  };
+
 
   const handleCheckIBAN = () => {
-    // Redirect the user to the IBAN checker website
     window.location.href = 'https://www.iban.com/iban-checker';
   };
+
+  useEffect(() => {
+    fetchHopeSeekers();
+  }, []);
 
   return (
     <>
@@ -58,21 +63,26 @@ const HopeSeekerList = () => {
           <h1>Hope Seekers</h1>
           <button onClick={handleCheckIBAN}>Check IBAN</button>
           <div className="hope-seekers-list">
-            {hopeSeekers.map((seeker) => (
-              <div key={seeker.id} className="hope-seeker-item">
-                <h2>{seeker.name}</h2>
-                <p>Phone: {seeker.phone}</p>
-                <p>IBAN: {seeker.iban}</p>
-                <p>Location: {seeker.location}</p>
-                <p>Monthly Salary: {seeker.monthlySalary}</p>
-                <p>Status: {seeker.isVerified ? 'Verified' : 'Not Verified'}</p>
-                {!seeker.isVerified && (
-                  <button onClick={() => handleVerifyAccount(seeker.id)}>
-                    Verify Account
-                  </button>
-                )}
-              </div>
-            ))}
+            {loading ? (
+              <p>Loading...</p>
+            ) : error ? (
+              <p>{error}</p>
+            ) : (
+              hopeSeekers.map((seeker) => (
+                <div key={seeker._id} className="hope-seeker-item">
+                  <h2>Full Name: {seeker.first_name} {seeker.last_name}</h2>
+                  <p>Username: {seeker.username}</p>
+                  <p>Email: {seeker.email}</p>
+                  <p>CNIC: {seeker.CNIC}</p>
+                  <p>Verification Status: {seeker.verification_status ? 'Verified' : 'Not Verified'}</p>
+                  {!seeker.verification_status && (
+                    <button onClick={() => handleVerifyAccount(seeker.id)}>
+                      Verify Account
+                    </button>
+                  )}
+                </div>
+              ))
+            )}
           </div>
         </div>
       </main>
