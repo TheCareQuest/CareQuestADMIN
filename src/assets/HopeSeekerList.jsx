@@ -29,14 +29,18 @@ const HopeSeekerList = () => {
     }
   };
 
-  const handleVerifyAccount = async (username) => {
+  const handleVerifyAccount = async (id) => {
+    console.log('Verifying account with id:', id);
     try {
-      const response = await fetch(`http://localhost:5000/api/hopeSeekers/${username}/verify`, {
-        method: 'PUT'
+      const response = await fetch(`http://localhost:5000/api/hopeSeekers/${id}/verify`, {
+        method: 'PUT',
+        body: JSON.stringify({ verification_status: true }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
       if (response.ok) {
-        // Hope seeker verified successfully
-        fetchHopeSeekers(); // Refresh hope seekers list
+        fetchHopeSeekers();
       } else {
         setError('Failed to verify account');
       }
@@ -45,7 +49,25 @@ const HopeSeekerList = () => {
     }
   };
 
-
+  const handleUnverifyAccount = async (id) => {
+    console.log('Unverifying account with id:', id);
+    try {
+      const response = await fetch(`http://localhost:5000/api/hopeSeekers/${id}/unverify`, {
+        method: 'PUT',
+        body: JSON.stringify({ verification_status: false }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      if (response.ok) {
+        fetchHopeSeekers();
+      } else {
+        setError('Failed to unverify account');
+      }
+    } catch (error) {
+      setError('Error unverifying account');
+    }
+  };
   const handleCheckIBAN = () => {
     window.location.href = 'https://www.iban.com/iban-checker';
   };
@@ -75,11 +97,20 @@ const HopeSeekerList = () => {
                   <p>Email: {seeker.email}</p>
                   <p>CNIC: {seeker.CNIC}</p>
                   <p>Verification Status: {seeker.verification_status ? 'Verified' : 'Not Verified'}</p>
-                  {!seeker.verification_status && (
-                    <button onClick={() => handleVerifyAccount(seeker.id)}>
-                      Verify Account
-                    </button>
-                  )}
+                  <button
+  className="verify-button"
+  onClick={() => handleVerifyAccount(seeker._id)}
+  disabled={seeker.verification_status}
+>
+  Verify Account
+</button>
+<button
+  className="unverify-button"
+  onClick={() => handleUnverifyAccount(seeker._id)}
+  disabled={!seeker.verification_status}
+>
+  Unverify Account
+</button>
                 </div>
               ))
             )}

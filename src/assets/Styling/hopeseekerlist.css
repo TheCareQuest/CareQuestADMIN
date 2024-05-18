@@ -55,8 +55,16 @@
     border-radius: 8px;
     box-sizing: border-box;
   }
-  
+  .verify-button:hover,
+  .unverify-button:hover {
+    background-color: #358638;
+    margin-right: 10px; /* Add space between buttons */
+    padding: 8px 12px; /* Adjusted padding for buttons */
+      
+  } 
   button {
+    margin-right: 10px; /* Add space between buttons */
+  padding: 8px 12px; /* Adjusted padding for buttons */
     padding: 8px;
     cursor: pointer;
   }
